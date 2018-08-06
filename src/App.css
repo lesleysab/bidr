@@ -1,0 +1,78 @@
+/* .App {
+  text-align: center;
+} */
+
+
+/* .my-card {
+  height: 350px;
+  width: 350px;
+  border: 2x solid black;
+} */
+
+
+.my-whole-card {
+  height: 800px;
+  width: 500px;
+  border: 2x solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+.image-holder {
+  background-image: url("img/kendra_scott_front.jpg");
+  height: 500px;
+  margin: 10px;
+  display: flex;
+
+}
+ 
+.input-style {
+  margin-left: 10px;
+  font-size: 14px;
+  font-family: sans-serif;
+
+}
+
+input {
+  border: 1px solid black;
+  font-family: sans-serif;
+}
+.bid-style {
+  margin-left: 10px;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+.more-input-style {
+  margin-left: 10px;
+  font-family: sans-serif;
+}
+
+.card-content {
+  border: 2x solid black;
+  /* font-size: 22px; */
+  color: black;
+  margin-left: 10px;
+
+ 
+ 
+
+}
+
+
+
+.mdc-card__actions {
+  border: 2x solid black;
+  margin-left: 10px;
+
+}
+
+
+.mdc-button--contained {
+  background: teal;
+  color: white;
+  flex-grow: inherit;
+  
+}

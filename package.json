@@ -1,0 +1,21 @@
+{
+  "name": "bidr",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^1.4.2",
+    "@material-ui/icons": "^2.0.0",
+    "@material/button": "^0.38.0",
+    "@material/card": "^0.38.0",
+    "react": "^16.4.1",
+    "react-card-scroll": "^2.2.4",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
