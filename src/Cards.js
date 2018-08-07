@@ -8,20 +8,22 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
+import TextField from '@material-ui/core/TextField';
 import Post from './post.js';
 
 
 class Cards extends Component {
   state = {
-    posts: [{id: 0, author: 'Mr. Woof',  time: 'Mon May 28 2018 16:12:25 GMT-0500 (CDT)', location: "500"},],
+    posts: [{id: 0, author: 'Mr. Woof',  time: '1:32:14 PM', bid: "500"},],
     postInput: '',
-    userNameInput: '',
-    locationInput: ''
+    nameInput: '',
+    bidInput: ''
+    
  };
 
  renderPosts(){
      return this.state.posts.map((post, index) => {
-         const description = `Bid $${post.location} by ${post.author} at ${post.time}`;
+         const description = `$${post.bid} by ${post.author} at ${post.time}`;
          return (
              <Post text={post.text}
                  author={description}
@@ -34,29 +36,30 @@ class Cards extends Component {
  handlePostInputChange(e){
      this.setState({postInput: e.target.value})
  }
- handleUserNameInputChange(e){
-     this.setState({userNameInput: e.target.value})
+ handleNameInputChange(e){
+     this.setState({nameInput: e.target.value})
  }
- handleLocationInputChange(e){
-     this.setState({locationInput: e.target.value})
+ handleBidInputChange(e){
+     this.setState({bidInput: e.target.value})
  }
  handleSubmitPost(){
+
+    const bidTime = new Date();
      const newPost = {
-         author: this.state.userNameInput,
+         author: this.state.nameInput,
          id: this.state.posts.length + 1,
-         time: new Date(),
-         location: this.state.locationInput,
+         time: bidTime.toLocaleTimeString('en-US'),
+         bid: this.state.bidInput,
      };
+     
      const posts = this.state.posts.map(post => post);
      posts.push(newPost);
-     this.setState({posts, userNameInput: '', locationInput: ''})
+     this.setState({posts, nameInput: '', bidInput: ''})
+     
  }
 
- renderSubmit(){
-    if (this.state.userNameInput && this.state.locationInput) {
-        return <button className = "mdc-button--contained" onClick={() => this.handleSubmitPost()}>Submit My Bid</button>
-    }
- }
+
+
 
 
 
@@ -64,38 +67,47 @@ class Cards extends Component {
 
   render() {
     return (
-      <div>
-        {/* <Grid container spacing={500} style={{padding: 10}}> */}
-               <Card className="my-whole-card">
-                    
-                        <div className="image-holder"></div>
-                        <div className="card-content">
-                         <h3>Kendra Scott Chalet</h3>
-                         <p>This lovely Kendra original was designed with love by the designer herself!</p>
+    
+        
+             <div id="wrapper">
+                 <div className="card">
+                     <div className="card-header">
+                         <div className="card-header-mask">
+                             <div className="card-header-date">
+                                 <div className="card-header-date-day">$500</div>
+                                 <div className="card-header-date-month">Current Bid</div>
+                             </div>
                          </div>
-                <Divider />        
-                       
-                       
-                    <div className="mdc-card__actions">
-                      <p> Current Bid: $500</p>
-                     
                      </div>
+                     <div className="card-body">
+                         <div className="card-body-header">
+                             <div className="card-body-header-category">Photos</div>
+                             <h1>Kendra Scott Chalet</h1>
+                             <p className="card-body-header-sentence">
+                                Lovely Kendra original designed with love by the designer herself!
+                             </p>
+                         </div>
+                         <div className ="card-body-description">
+                             
+                              <TextField value={this.state.nameInput} onChange={(e) => this.handleNameInputChange(e)} className = "input" placeholder="Name"/>
+                              <TextField value={this.state.bidInput} onChange={(e) => this.handleBidInputChange(e)}  className = "input" placeholder="Amount"/>
+                              <button variant="contained" color="primary" className="Button" onClick={() => this.handleSubmitPost()} >
+                                Bid 
+                            </button>
+                            </div>
+                            <div className = "posts">
+                           
+                                {this.renderPosts()}
+                         </div>
+                        
 
-
-                  <div className = "input-style">
-                     <input value={this.state.userNameInput} onChange={(e) => this.handleUserNameInputChange(e)} placeholder="Name"/>
-                   </div>  
-                   <div className = "more-input-style">
-                     <input value={this.state.locationInput} onChange={(e) => this.handleLocationInputChange(e)} placeholder="Bid Amount"/>
-                    </div>
-                     {this.renderSubmit()}
-                 <div className = "bid-style">
-                     {this.renderPosts()}
-                  </div> 
-             </Card> 
-
-            {/* </Grid> */}
-        </div>          
+                    
+                 </div>
+              </div>
+            </div>
+       
+       
+        
 
     
     );
