@@ -12,6 +12,7 @@ import Chip from "@material-ui/core/Chip";
 import Post from "./post";
 import TextField from "@material-ui/core/TextField";
 import "./MenuAppBar";
+import { throws } from "assert";
 
 const styles = theme => ({
   card: {
@@ -120,7 +121,8 @@ class CardComponent extends Component {
             style={{
               display: "flex",
               flexDirection: "row",
-              justifyContent: "space-between"
+              justifyContent: "space-between",
+              textAlign: "justify"
             }}>
             <CardHeader title={this.props.itemTitle} />
             <Chip
@@ -136,14 +138,21 @@ class CardComponent extends Component {
               label={`$${this.state.currentBid}`}
               color="teal"
             />
+
           </div>
 
-          <div className="my-card__media" />
+
+          <div
+            className="my-card_media" >
+            <img src={this.props.image} />
+          </div>
+
 
           <CardContent>
-            <Typography component="p" style={{ fontSize: "18px" }}>
+            <Typography component="p" style={{ fontSize: "18px", textAlign: "justify" }}>
               {this.props.itemDescription}
             </Typography>
+
           </CardContent>
           <CardActions
             className={classes.actions}

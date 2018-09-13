@@ -1,19 +1,28 @@
-import React, { Component } from "react";
-import "./App.css";
+import React from "react";
+import CardComponent from "./CardComponent";
 import Cards2 from "./Cards2";
-import MenuAppBar from "./MenuAppBar";
-import { styles } from "./styles";
+import { withStyles } from "@material-ui/core/styles";
+import "./App.css";
 
 
 
 
+class App extends React.Component {
 
-class App extends Component {
+
   render() {
+
+
     return (
-      <div>
-        <Cards2 />
-      </div >
+      <div id="wrapper">
+        <div className="card-layout">
+
+          <Cards2 classes={{ card: "mr-fluff" }} />
+        </div>
+      </div>
+
+
+
     );
   }
 }
