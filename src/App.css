@@ -3,7 +3,6 @@
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-
 }
 img {
   max-height: 300px;
@@ -17,17 +16,38 @@ img {
   flex-wrap: wrap;
 }
 
-#wrapper {
+#login-wrapper {
   width: 100%;
+  height: 1000px;
+  display: flex;
 
-  background: -webkit-linear-gradient(#a5b5bd 0, #7b847b 100%);
+  justify-content: center;
+  /* background: -webkit-linear-gradient(#a5b5bd 0, #7b847b 100%);
   background: -moz-linear-gradient(#a5b5bd 0, #7b847b 100%);
   background: -ms-linear-gradient(#a5b5bd 0, #7b847b 100%);
   background: -o-linear-gradient(#a5b5bd 0, #7b847b 100%);
-  background: linear-gradient(#a5b5bd 0, #7b847b 100%);
+  background: linear-gradient(#a5b5bd 0, #7b847b 100%); */
+  opacity: 0.9;
+  background-image: url("img/Murphy_outside.jpg");
 }
 
-
+button {
+  background: orange;
+  margin-top: 25px;
+  align-content: center;
+  font-weight: bold;
+}
+label {
+  font-weight: bold;
+}
+input {
+  width: 200px;
+}
+.form-submit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .card-header {
   display: flex;
@@ -37,42 +57,24 @@ img {
 }
 
 .mr-fluff {
-min-width: 400px;
-margin:10px;
-
+  min-width: 400px;
+  margin: 10px;
 }
 .my-chip {
   align-items: flex-end;
 }
 
 .output {
-  font: 1rem 'Fira Sans', sans-serif;
+  font: 1rem "Fira Sans", sans-serif;
 }
-
 
 .username {
   margin: 10px;
 }
 
-
 .password {
   margin: 10px;
 }
 label {
-
   margin-right: 10px;
-}
-
-#login-wrapper {
-  width: 100%;
-  display:flex; 
-  flex-direction: column; 
-  margin:auto;
-
-  background: -webkit-linear-gradient(#a5b5bd 0, #7b847b 100%);
-  background: -moz-linear-gradient(#a5b5bd 0, #7b847b 100%);
-  background: -ms-linear-gradient(#a5b5bd 0, #7b847b 100%);
-  background: -o-linear-gradient(#a5b5bd 0, #7b847b 100%);
-  background: linear-gradient(#a5b5bd 0, #7b847b 100%);
-
 }

@@ -2,8 +2,6 @@ import React from "react";
 import CardComponent from "./CardComponent";
 import { withStyles } from "@material-ui/core/styles";
 
-
-
 const styles = theme => ({
   card: {
     maxWidth: 400
@@ -31,16 +29,19 @@ const styles = theme => ({
 });
 
 class Cards2 extends React.Component {
-  state = {
-    posts: [{ id: 0, author: "Mr. Woof", time: "1:32:14 PM", bid: "500" }],
-    postInput: "",
-    nameInput: "",
-    bidInput: "",
-    bidError: "",
-    currentBid: 0,
-    expanded: false,
-    items: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: [{ id: 0, author: "Mr. Woof", time: "1:32:14 PM", bid: "500" }],
+      postInput: "",
+      nameInput: "",
+      bidInput: "",
+      bidError: "",
+      currentBid: 0,
+      expanded: false,
+      items: []
+    };
+  }
 
   getInitialBid = () => {
     this.setState({
@@ -52,13 +53,13 @@ class Cards2 extends React.Component {
     this.getInitialBid();
 
     fetch("/biditems")
-      .then(res => res.json())
+      .then(res => {
+        return res.json();
+      })
       .then(items => {
         this.setState({ items });
       });
-
   }
-
 
   render() {
     const { classes } = this.props;
@@ -67,12 +68,14 @@ class Cards2 extends React.Component {
       <React.Fragment>
         {this.state.items.map(biditem => (
           <CardComponent
+            bidder={this.props.bidder}
             classes={classes}
             itemTitle={biditem.itemTitle}
             itemDescription={biditem.itemDescription}
             image={biditem.image}
             startBid={biditem.startBid}
             posts={biditem.log}
+            id={biditem._id}
           />
         ))}
       </React.Fragment>

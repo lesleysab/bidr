@@ -78,17 +78,19 @@ class CardComponent extends Component {
   }
 
   handleSubmitPost() {
-
     const bidTime = new Date();
     const newPost = {
       id: this.state.posts.length + 1,
       time: bidTime.toLocaleTimeString("en-US"),
-      bid: this.state.bidInput
+      bid: this.state.bidInput,
+      author: this.props.bidder
     };
 
     // const copy = this.state.posts.map(item => item);
     const copy = this.state.posts;
-    const oldBid = copy.length && copy[copy.length - 1].bid || { bid: this.props.startBid };
+    const oldBid = (copy.length && copy[copy.length - 1].bid) || {
+      bid: this.props.startBid
+    };
     if (!newPost.bid || parseInt(newPost.bid) - parseInt(oldBid) < 100) {
       return this.setState({
         bidError: "Please increment in amounts of $100 or more"
@@ -97,6 +99,8 @@ class CardComponent extends Component {
 
     const posts = this.state.posts.map(item => item);
     posts.push(newPost);
+    this.submitPost();
+
     this.setState({
       posts,
       nameInput: "",
@@ -104,6 +108,25 @@ class CardComponent extends Component {
       bidError: "",
       currentBid: newPost.bid
     });
+  }
+
+  submitPost() {
+    fetch("/biditems", {
+      method: "put",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({})
+    })
+      .then(res => {
+        debugger;
+        return res.json();
+      })
+      .catch(err => {
+        debugger;
+        console.log("error");
+      });
   }
 
   handleExpandClick = () => {
@@ -123,7 +146,8 @@ class CardComponent extends Component {
               flexDirection: "row",
               justifyContent: "space-between",
               textAlign: "justify"
-            }}>
+            }}
+          >
             <CardHeader title={this.props.itemTitle} />
             <Chip
               className="my-chip"
@@ -138,21 +162,19 @@ class CardComponent extends Component {
               label={`$${this.state.currentBid}`}
               color="teal"
             />
-
           </div>
 
-
-          <div
-            className="my-card_media" >
+          <div className="my-card_media">
             <img src={this.props.image} />
           </div>
 
-
           <CardContent>
-            <Typography component="p" style={{ fontSize: "18px", textAlign: "justify" }}>
+            <Typography
+              component="p"
+              style={{ fontSize: "18px", textAlign: "justify" }}
+            >
               {this.props.itemDescription}
             </Typography>
-
           </CardContent>
           <CardActions
             className={classes.actions}

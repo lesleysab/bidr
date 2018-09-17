@@ -7,3 +7,10 @@ module.exports.list = function list(req, res) {
     .then(items => res.json(items))
     .catch(err => res.json("api failure"));
 };
+
+module.exports.update = function update(req, res) {
+  console.log("you're heere");
+  // let newComment = req.body;
+
+  // return res.json(newComment);
+};
