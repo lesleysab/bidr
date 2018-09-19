@@ -40,41 +40,45 @@ class Form extends Component {
     const { classes } = this.props;
     return (
       <div id="login-wrapper">
-        <div className="form-submit">
-          <div className="bidr-logo">
-            <h1>BIDR</h1>
+        <div className="login-color-block">
+          <div className="form-submit">
+            <div className="bidr-logo">
+          
+            </div>
+            <div className="login-form">
+              <div className="username">
+                <label>Username:</label>
+                <input
+                  type="text"
+                  id="uname"
+                  name="uname"
+                  required
+                  onChange={e => this.usernameChanged(e)}
+                />
+                <span className="validity" />
+              </div>
+              <div className="password">
+                <label>Password:</label>
+                <input
+                  type="text"
+                  id="password"
+                  name="password"
+                  required
+                  onChange={e => this.passChanged(e)}
+                />
+                <span className="validity" />
+              </div>
+              <button
+                color="primary"
+                style={{ fontSize: "20px" }}
+                onClick={() =>
+                  this.props.login(this.state.username, this.state.password)
+                }
+              >
+                Sign In
+              </button>
+            </div>
           </div>
-          <div className="username">
-            <label>Username:</label>
-            <input
-              type="text"
-              id="uname"
-              name="uname"
-              required
-              onChange={e => this.usernameChanged(e)}
-            />
-            <span className="validity" />
-          </div>
-          <div className="password">
-            <label>Password:</label>
-            <input
-              type="text"
-              id="password"
-              name="password"
-              required
-              onChange={e => this.passChanged(e)}
-            />
-            <span className="validity" />
-          </div>
-          <button
-            color="primary"
-            style={{ fontSize: "20px" }}
-            onClick={() =>
-              this.props.login(this.state.username, this.state.password)
-            }
-          >
-            Sign In
-          </button>
         </div>
       </div>
     );

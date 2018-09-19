@@ -17,36 +17,88 @@ img {
 }
 
 #login-wrapper {
-  width: 100%;
-  height: 1000px;
-  display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 
-  justify-content: center;
+  /* width: 100%;
+  height: 1000px; */
+  flex-direction: column;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
   /* background: -webkit-linear-gradient(#a5b5bd 0, #7b847b 100%);
   background: -moz-linear-gradient(#a5b5bd 0, #7b847b 100%);
   background: -ms-linear-gradient(#a5b5bd 0, #7b847b 100%);
   background: -o-linear-gradient(#a5b5bd 0, #7b847b 100%);
   background: linear-gradient(#a5b5bd 0, #7b847b 100%); */
-  opacity: 0.9;
+
   background-image: url("img/Murphy_outside.jpg");
 }
 
+.bidr-logo {
+  margin-bottom: 36px;
+  margin-left: 15px;
+  text-align: center;
+  height: 100px;
+  background-image: url("img/BIDR.png");
+}
+.login-form {
+  margin: 0;
+}
+.login-color-block {
+  justify-content: center;
+  align-items: stretch;
+  flex: 1;
+  display: flex;
+  max-width: 720px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  flex-direction: column;
+  background-color: #6f5b44;
+  opacity: 0.8;
+}
+
 button {
-  background: orange;
-  margin-top: 25px;
-  align-content: center;
-  font-weight: bold;
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin-top: 12px;
+  line-height: 32px;
+  padding: 6px 12px;
+  border-radius: 2px;
+  border: 0;
+  color: white;
+  background-color: orange;
+  font-size: 14px;
+  text-decoration: none;
+  margin-top: 30px;
+  /* transition: background-color ease 200ms; */
 }
 label {
   font-weight: bold;
 }
 input {
   width: 200px;
+  border: 2px solid black;
 }
 .form-submit {
-  display: flex;
+  margin: auto;
+  padding: 36px;
+  max-width: 360px;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+  /* display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; */
+
+  /* margin-left: 80px; */
+  /* height: 200px; */
 }
 
 .card-header {
@@ -69,12 +121,14 @@ input {
 }
 
 .username {
-  margin: 10px;
+  border-radius: 2px 2px 0 0;
+  margin-bottom: 10px;
 }
 
 .password {
-  margin: 10px;
+  border-radius: 2px 2px 0 0;
 }
 label {
-  margin-right: 10px;
+  margin-right: 25px;
+  color: black;
 }
