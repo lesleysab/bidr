@@ -4,12 +4,10 @@ import "./index.css";
 import Login from "./Login";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import store from "./store";
+// import { Provider } from "react-redux";
 
-ReactDOM.render(
-  <BrowserRouter>
-    <Login />
-  </BrowserRouter>,
-  document.getElementById("root")
-);
+//add this later <Provider store={store}><Login /></Provider>,
+
+ReactDOM.render(<Login />, document.getElementById("root"));
 registerServiceWorker();

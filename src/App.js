@@ -14,15 +14,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="wrapper">
-        <MenuAppBar />
-        <div className="card-layout">
-          <Cards2 classes={{ card: "mr-fluff" }} bidder={this.props.bidder} />
+      <BrowserRouter>
+        <div id="wrapper">
+          <MenuAppBar />
+          <div className="card-layout">
+            <Cards2 classes={{ card: "mr-fluff" }} bidder={this.props.bidder} />
+          </div>
+          <Switch>
+            <Route exact path="/signin" component={Login} />
+          </Switch>
         </div>
-        <Switch>
-          <Route exact path="/signin" component={Login} />
-        </Switch>
-      </div>
+      </BrowserRouter>
     );
   }
 }
