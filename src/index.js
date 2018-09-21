@@ -6,8 +6,18 @@ import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 // import store from "./store";
 // import { Provider } from "react-redux";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 //add this later <Provider store={store}><Login /></Provider>,
+const Main = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Login} />
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
-ReactDOM.render(<Login />, document.getElementById("root"));
+ReactDOM.render(<Main />, document.getElementById("root"));
 registerServiceWorker();

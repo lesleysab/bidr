@@ -42,9 +42,7 @@ class Form extends Component {
       <div id="login-wrapper">
         <div className="login-color-block">
           <div className="form-submit">
-            <div className="bidr-logo">
-          
-            </div>
+            <div className="bidr-logo" />
             <div className="login-form">
               <div className="username">
                 <label>Username:</label>
@@ -90,7 +88,7 @@ class Login extends Component {
     super(props);
     this.state = {
       authed: false,
-      user: "Lesley"
+      user: null
     };
   }
 
@@ -108,9 +106,17 @@ class Login extends Component {
     this.setState({ authed, user: currentUser });
   };
 
+  logOut = () => {
+    this.setState({
+      authed: false,
+      user: null
+    });
+  };
+
   render() {
-    return this.state.authed ? (
-      <App bidder={this.state.user} />
+    // this.state.authed
+    return true ? (
+      <App bidder={this.state.user} logOut={this.logOut} />
     ) : (
       <Form login={this.login} />
     );

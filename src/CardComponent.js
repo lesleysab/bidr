@@ -187,7 +187,7 @@ class CardComponent extends Component {
             <Button
               color="primary"
               className={classes.button}
-              style={{ fontSize: "20px" }}
+              style={{ fontSize: "20px", justifyContent: "flex-end" }}
               onClick={this.handleExpandClick}
               aria-expanded={this.state.expanded}
             >

@@ -25,10 +25,13 @@ const styles = {
 };
 
 class MenuAppBar extends React.Component {
-  state = {
-    auth: true,
-    anchorEl: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      auth: true,
+      anchorEl: null
+    };
+  }
 
   handleChange = event => {
     this.setState({ auth: event.target.checked });
@@ -89,9 +92,11 @@ class MenuAppBar extends React.Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <Link to="/signin">
+                  <Link to="/">
                     {/* {" "} */}
-                    <MenuItem>Sign Out</MenuItem>
+                    <MenuItem onClick={() => this.props.logOut()}>
+                      Sign Out
+                    </MenuItem>
                   </Link>
                 </Menu>
               </div>

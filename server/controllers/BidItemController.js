@@ -12,5 +12,7 @@ module.exports.update = function update(req, res) {
   console.log("you're heere");
   // let newComment = req.body;
 
+  //get log and id
+
   // return res.json(newComment);
 };
