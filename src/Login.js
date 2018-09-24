@@ -50,6 +50,7 @@ class Form extends Component {
                   type="text"
                   id="uname"
                   name="uname"
+                  placeholder="Lesley"
                   required
                   onChange={e => this.usernameChanged(e)}
                 />
@@ -61,6 +62,7 @@ class Form extends Component {
                   type="text"
                   id="password"
                   name="password"
+                  placeholder="Lesley"
                   required
                   onChange={e => this.passChanged(e)}
                 />
