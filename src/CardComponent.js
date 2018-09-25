@@ -77,7 +77,7 @@ class CardComponent extends Component {
       });
   }
 
-  handleSubmitPost() {
+  handleSubmitPost = () => {
     const bidTime = new Date();
     const newPost = {
       id: this.state.posts.length + 1,
@@ -99,7 +99,7 @@ class CardComponent extends Component {
 
     const posts = this.state.posts.map(item => item);
     posts.push(newPost);
-    this.submitPost();
+    this.submitPost(this.props.id, posts);
 
     this.setState({
       posts,
@@ -108,24 +108,21 @@ class CardComponent extends Component {
       bidError: "",
       currentBid: newPost.bid
     });
-  }
+  };
 
-  submitPost() {
+  submitPost(cardId, log) {
     fetch("/biditems", {
       method: "put",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({})
+      body: JSON.stringify({ cardId, log })
     })
-      .then(res => {
-        debugger;
-        return res.json();
-      })
+      .then(res => res.json())
+      .then(results => results)
       .catch(err => {
-        debugger;
-        console.log("error");
+        console.log("error", err);
       });
   }
 

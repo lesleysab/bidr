@@ -1,5 +1,3 @@
-// let mongoose = require("mongoose");
-// let contacts = require("../items");
 const BidItemModel = require("../models/BidItemModel");
 
 module.exports.list = function list(req, res) {
@@ -9,10 +7,10 @@ module.exports.list = function list(req, res) {
 };
 
 module.exports.update = function update(req, res) {
-  console.log("you're heere");
-  // let newComment = req.body;
-
-  //get log and id
-
-  // return res.json(newComment);
+  return BidItemModel.findOneAndUpdate(
+    { _id: req.body.cardId },
+    { $set: { log: req.body.log } }
+  ).then(results => {
+    return res.json(results);
+  });
 };

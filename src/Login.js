@@ -116,8 +116,9 @@ class Login extends Component {
   };
 
   render() {
-    // this.state.authed
-    return true ? (
+    // true ?
+    // this.state.authed ?
+    return this.state.authed ? (
       <App bidder={this.state.user} logOut={this.logOut} />
     ) : (
       <Form login={this.login} />
