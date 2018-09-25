@@ -34,7 +34,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "prod": "node ./server/index.js"
+    "prod": "node ./server/index.js",
+    "postinstall": "npm run build"
   },
   "proxy": {
     "biditems": {
