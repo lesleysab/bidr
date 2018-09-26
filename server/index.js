@@ -17,6 +17,9 @@ app.use(
   express.static(path.join(__dirname + "../../build"))
 );
 
-app.listen(3001, () => {
+// app.listen(3001, () => {
+//   console.log("listening on: 3001");
+// });
+app.listen(process.env.PORT || 3001, () => {
   console.log("listening on: 3001");
 });
