@@ -40,7 +40,7 @@ img {
 
 .bidr-logo {
   margin-bottom: 36px;
-  margin-left: 15px;
+  /* margin-left: 15px; */
   text-align: center;
   height: 100px;
   background-image: url("img/BIDR.png");
@@ -89,7 +89,7 @@ input {
   margin: auto;
   padding: 36px;
   max-width: 360px;
-  width: 100%;
+  /* width: 100%; */
   background-color: white;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
   border-radius: 3px;

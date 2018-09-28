@@ -14,3 +14,12 @@ module.exports.update = function update(req, res) {
     return res.json(results);
   });
 };
+
+module.exports.create = function create(req, res) {
+  const newBidItem = new BidItemModel({
+    body: req.body.body
+  });
+  newBidItem.save().then(savedBidItem => {
+    return res.json(savedBidItem);
+  });
+};
