@@ -132,3 +132,67 @@ label {
   margin-right: 25px;
   color: black;
 }
+
+/* Bid Form */
+
+.bid-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+}
+
+.bid-form {
+  display: flex;
+  flex-direction: column;
+}
+.bid-form-label {
+}
+
+.bid-form-input {
+  width: 300px;
+  height: 25px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+}
+.bid-form-header {
+}
+
+.bid-form-inputs {
+  display: flex;
+  flex-direction: column;
+}
+.submit-button {
+  width: 300px;
+  height: 40px;
+  background-color: teal;
+  border: none;
+  color: white;
+  font-size: 14px;
+}
+
+/* Countdown */
+
+.Countdown {
+  margin: 10px auto;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.Countdown-col {
+  display: inline-block;
+}
+
+.Countdown-col-element {
+  display: inline-block;
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Countdown-col-element strong {
+  font-size: 30px;
+}
+
+.title {
+  text-align: center;
+}

@@ -17,7 +17,10 @@ module.exports.update = function update(req, res) {
 
 module.exports.create = function create(req, res) {
   const newBidItem = new BidItemModel({
-    body: req.body.body
+    itemTitle: req.body.itemTitle,
+    itemDescription: req.body.itemDescription,
+    startBid: req.body.startBid,
+    image: req.body.image
   });
   newBidItem.save().then(savedBidItem => {
     return res.json(savedBidItem);

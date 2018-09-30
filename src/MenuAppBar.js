@@ -9,9 +9,13 @@ import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import SearchIcon from "@material-ui/icons/Search";
+import Input from "@material-ui/core/Input";
+import MenuList from "@material-ui/core/MenuList";
+import { fade } from "@material-ui/core/styles/colorManipulator";
 import { Link } from "react-router-dom";
 
-const styles = {
+const styles = theme => ({
   root: {
     flexGrow: 1
   },
@@ -21,8 +25,55 @@ const styles = {
   menuButton: {
     marginLeft: -12,
     marginRight: 20
+  },
+  title: {
+    display: "none",
+    [theme.breakpoints.up("sm")]: {
+      display: "block"
+    }
+  },
+  search: {
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: fade(theme.palette.common.white, 0.25)
+    },
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing.unit,
+      width: "auto"
+    }
+  },
+  searchIcon: {
+    width: theme.spacing.unit * 9,
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  inputRoot: {
+    color: "inherit",
+    width: "100%"
+  },
+  inputInput: {
+    paddingTop: theme.spacing.unit,
+    paddingRight: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
+    paddingLeft: theme.spacing.unit * 10,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: 120,
+      "&:focus": {
+        width: 200
+      }
+    }
   }
-};
+});
 
 class MenuAppBar extends React.Component {
   constructor(props) {
@@ -61,6 +112,7 @@ class MenuAppBar extends React.Component {
             >
               <MenuIcon />
             </IconButton>
+
             <Typography
               variant="title"
               color="inherit"
@@ -68,6 +120,19 @@ class MenuAppBar extends React.Component {
             >
               Dog Houses
             </Typography>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <Input
+                placeholder="Search…"
+                disableUnderline
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput
+                }}
+              />
+            </div>
             {auth && (
               <div>
                 <IconButton
@@ -92,6 +157,9 @@ class MenuAppBar extends React.Component {
                   open={open}
                   onClose={this.handleClose}
                 >
+                  <Link to="/bidform">
+                    <MenuItem>New Bid Item</MenuItem>
+                  </Link>
                   <Link to="/">
                     {/* {" "} */}
                     <MenuItem onClick={() => this.props.logOut()}>
