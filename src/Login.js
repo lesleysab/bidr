@@ -59,7 +59,7 @@ class Form extends Component {
               <div className="password">
                 <label>Password:</label>
                 <input
-                  type="text"
+                  type="password"
                   id="password"
                   name="password"
                   placeholder="Lesley"

@@ -15,6 +15,7 @@ const Main = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/bidform" component={BidItemForm} />
+        <Route exact path="/biditems" component={App} />
 
         <Route exact path="/" component={Login} />
       </Switch>

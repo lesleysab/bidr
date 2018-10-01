@@ -15,7 +15,7 @@ module.exports.update = function update(req, res) {
   });
 };
 
-module.exports.create = function create(req, res) {
+module.exports.create = function create(req, res, next) {
   const newBidItem = new BidItemModel({
     itemTitle: req.body.itemTitle,
     itemDescription: req.body.itemDescription,
