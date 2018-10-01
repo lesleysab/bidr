@@ -72,7 +72,7 @@ class Cards2 extends React.Component {
             classes={classes}
             itemTitle={biditem.itemTitle}
             itemDescription={biditem.itemDescription}
-            image={biditem.image}
+            imageURL={biditem.imageURL}
             startBid={biditem.startBid}
             posts={biditem.log}
             id={biditem._id}

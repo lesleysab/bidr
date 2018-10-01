@@ -20,7 +20,7 @@ module.exports.create = function create(req, res, next) {
     itemTitle: req.body.itemTitle,
     itemDescription: req.body.itemDescription,
     startBid: req.body.startBid,
-    image: req.body.image
+    imageURL: req.body.imageURL
   });
   newBidItem.save().then(savedBidItem => {
     return res.json(savedBidItem);

@@ -162,7 +162,7 @@ class CardComponent extends Component {
           </div>
 
           <div className="my-card_media">
-            <img src={this.props.image} />
+            <img src={this.props.imageURL} />
           </div>
 
           <CardContent>
