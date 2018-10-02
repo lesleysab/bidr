@@ -6,46 +6,6 @@ import createData from "./createData";
 import { Link } from "react-router-dom";
 
 class BidItemForm extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     displayBidItems: false
-  //   };
-  // }
-  // submitNewBidItem(bidForm) {
-  //   fetch("/biditems", {
-  //     method: "post",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({ bidForm })
-  //   })
-  //     .then(res => res.json())
-  //     .then(results => results)
-  //     .catch(err => {
-  //       console.log("error", err);
-  //     });
-  // }
-
-  // handleSubmitNewBidItem = () => {
-  //   const newBidItem = {
-  //     itemTitle: this.state.itemTitle,
-  //     itemDescription: this.state.itemDescription,
-  //     startBid: this.state.startBid,
-  //     image: this.state.image
-  //   };
-
-  //   const bidItems = this.state.posts.map(item => item);
-  //   bidItems.push(newBidItem);
-  //   this.submitNewBidItem(bidItems);
-  // };
-
-  // displayBidItems = e => {
-  //   this.setState({
-  //     displayBidItems: this.state.displayBidItems
-  //   });
-  // };
   render() {
     return (
       <div>
@@ -56,20 +16,29 @@ class BidItemForm extends React.Component {
               <p>Enter New Bid Item</p>
               <hr />
             </div>
-            <form className="bid-form-inputs" method="POST">
+            <form
+              name="my-form"
+              className="bid-form-inputs"
+              // onsubmit="return validateForm()"
+              // method="POST"
+            >
               <label className="bid-form-label">Item Name</label>
               <input
                 className="bid-form-input"
+                name="item-name"
                 type="text"
                 id="itemTitle"
                 placeholder="Item Name"
+                required
               />
               <label className="bid-form-label">Item Description</label>
               <input
                 className="bid-form-input"
+                name="item-desc"
                 type="textarea"
                 id="itemDescription"
                 placeholder="Describe the item"
+                required
               />
               <label className="bid-form-label">Starting Bid</label>
               <input
@@ -77,6 +46,7 @@ class BidItemForm extends React.Component {
                 type="text"
                 id="startBid"
                 placeholder="Starting bid"
+                required
               />
               <label className="bid-form-label">Image Link</label>
               <input
@@ -84,28 +54,30 @@ class BidItemForm extends React.Component {
                 id="imageURL"
                 type="text"
                 placeholder="URL"
+                required
               />
-              <Link to="/biditems">
-                <button
-                  className="submit-button"
-                  onClick={() => {
-                    let itemTitle = document.getElementById("itemTitle").value;
-                    let itemDescription = document.getElementById(
-                      "itemDescription"
-                    ).value;
-                    let startBid = document.getElementById("startBid").value;
-                    let imageURL = document.getElementById("imageURL").value;
-                    createData.bidItem({
-                      itemTitle,
-                      itemDescription,
-                      startBid,
-                      imageURL
-                    });
-                  }}
-                >
-                  Submit
-                </button>
-              </Link>
+              {/* <Link to="/biditems"> */}
+              <button
+                type="submit"
+                className="submit-button"
+                onClick={() => {
+                  let itemTitle = document.getElementById("itemTitle").value;
+                  let itemDescription = document.getElementById(
+                    "itemDescription"
+                  ).value;
+                  let startBid = document.getElementById("startBid").value;
+                  let imageURL = document.getElementById("imageURL").value;
+                  return createData.bidItem({
+                    itemTitle,
+                    itemDescription,
+                    startBid,
+                    imageURL
+                  });
+                }}
+              >
+                Submit
+              </button>
+              {/* </Link> */}
             </form>
           </div>
         </div>

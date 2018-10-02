@@ -2,17 +2,21 @@ let mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
   itemTitle: {
-    type: String
+    type: String,
+    required: true
   },
   itemDescription: {
-    type: String
+    type: String,
+    required: true
   },
   startBid: {
-    type: Number
+    type: Number,
+    required: true
   },
   imageURL: {
     data: Buffer,
-    type: String
+    type: String,
+    required: true
   },
   log: []
 });
