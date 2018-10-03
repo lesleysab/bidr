@@ -6,6 +6,44 @@ import createData from "./createData";
 import { Link } from "react-router-dom";
 
 class BidItemForm extends React.Component {
+  state = {
+    itemTitle: "",
+    itemDescription: "",
+    startBid: "",
+    imageURL: ""
+  };
+
+  handleInput = (e, inputType) => {
+    const updateState = {};
+    updateState[inputType] = e.target.value;
+    this.setState(updateState);
+  };
+
+  clearForm = () => {
+    this.setState({
+      itemTitle: "",
+      itemDescription: "",
+      startBid: "",
+      imageURL: ""
+    });
+  };
+
+  createBidItem = e => {
+    e.preventDefault();
+    let itemTitle = this.state.itemTitle;
+    let itemDescription = this.state.itemDescription;
+    let startBid = this.state.startBid;
+    let imageURL = this.state.imageURL;
+    return createData
+      .bidItem({
+        itemTitle,
+        itemDescription,
+        startBid,
+        imageURL
+      })
+      .then(() => this.clearForm());
+  };
+
   render() {
     return (
       <div>
@@ -19,8 +57,7 @@ class BidItemForm extends React.Component {
             <form
               name="my-form"
               className="bid-form-inputs"
-              // onsubmit="return validateForm()"
-              // method="POST"
+              onSubmit={e => this.createBidItem(e)}
             >
               <label className="bid-form-label">Item Name</label>
               <input
@@ -30,6 +67,8 @@ class BidItemForm extends React.Component {
                 id="itemTitle"
                 placeholder="Item Name"
                 required
+                value={this.state.itemTitle}
+                onChange={e => this.handleInput(e, "itemTitle")}
               />
               <label className="bid-form-label">Item Description</label>
               <input
@@ -39,6 +78,8 @@ class BidItemForm extends React.Component {
                 id="itemDescription"
                 placeholder="Describe the item"
                 required
+                value={this.state.itemDescription}
+                onChange={e => this.handleInput(e, "itemDescription")}
               />
               <label className="bid-form-label">Starting Bid</label>
               <input
@@ -47,6 +88,8 @@ class BidItemForm extends React.Component {
                 id="startBid"
                 placeholder="Starting bid"
                 required
+                value={this.state.startBid}
+                onChange={e => this.handleInput(e, "startBid")}
               />
               <label className="bid-form-label">Image Link</label>
               <input
@@ -55,26 +98,11 @@ class BidItemForm extends React.Component {
                 type="text"
                 placeholder="URL"
                 required
+                value={this.state.imageURL}
+                onChange={e => this.handleInput(e, "imageURL")}
               />
               {/* <Link to="/biditems"> */}
-              <button
-                type="submit"
-                className="submit-button"
-                onClick={() => {
-                  let itemTitle = document.getElementById("itemTitle").value;
-                  let itemDescription = document.getElementById(
-                    "itemDescription"
-                  ).value;
-                  let startBid = document.getElementById("startBid").value;
-                  let imageURL = document.getElementById("imageURL").value;
-                  return createData.bidItem({
-                    itemTitle,
-                    itemDescription,
-                    startBid,
-                    imageURL
-                  });
-                }}
-              >
+              <button type="submit" className="submit-button">
                 Submit
               </button>
               {/* </Link> */}
