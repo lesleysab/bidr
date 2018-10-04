@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import App from "./App";
 import { withStyles } from "@material-ui/core/styles";
+import cookie from "cookie";
 
 const users = [
   {
@@ -101,6 +102,7 @@ class Login extends Component {
     users.forEach(user => {
       if (username === user.name && password === user.pass) {
         authed = true;
+        document.cookie = "authed=true; max-age=360;";
         currentUser = username;
       }
     });
@@ -109,16 +111,22 @@ class Login extends Component {
   };
 
   logOut = () => {
+    document.cookie = "authed=false;";
     this.setState({
       authed: false,
       user: null
     });
   };
 
+  checkSession = () => {
+    const cookies = cookie.parse(document.cookie);
+    return this.state.authed || JSON.parse(cookies.authed || "false");
+  };
+
   render() {
     // true ?
     // this.state.authed ?
-    return this.state.authed ? (
+    return this.checkSession() ? (
       <App bidder={this.state.user} logOut={this.logOut} />
     ) : (
       <Form login={this.login} />

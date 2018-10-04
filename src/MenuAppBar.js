@@ -104,35 +104,18 @@ class MenuAppBar extends React.Component {
     return (
       <div className={classes.root}>
         <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="Menu"
-            >
-              <MenuIcon />
-            </IconButton>
+          <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <Typography
+                variant="title"
+                color="inherit"
+                style={{ color: "white", width: "100%" }}
+                className={classes.grow}
+              >
+                Dog Houses
+              </Typography>
+            </Link>
 
-            <Typography
-              variant="title"
-              color="inherit"
-              className={classes.grow}
-            >
-              Dog Houses
-            </Typography>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <Input
-                placeholder="Search…"
-                disableUnderline
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
-                }}
-              />
-            </div>
             {auth && (
               <div>
                 <IconButton
