@@ -5,7 +5,7 @@ const path = require("path");
 const BidItemRoutes = require("./routes/BidItemRoutes");
 mongoose.Promise = global.Promise;
 mongoose.connect(
-  "mongodb://lesleysab:Murphydog1@ds123822.mlab.com:23822/final-project"
+  "mongodb://lesleysab:@ds123822.mlab.com:23822/final-project"
 );
 
 const app = express();
